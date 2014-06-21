@@ -8,25 +8,5 @@
 #
 #
 
-nginx_dir = '/opt/local/etc/nginx'
-
-include_recipe "nginx::source"
-
-template "#{nginx_dir}/sites-available/wordpress.conf" do
-  source "nginx/wordpress.conf.erb"
-  owner  "www"
-  mode 0644
-  variables({ doc_root: '/home/www/bhrsc', host_name: 'bassethoundrescue.org' })
-  notifies :run, "execute[verify nginx configuration file]"
-end
-
-nginx_site 'wordpress.conf' do
-  enable true
-end
-
-execute "verify nginx configuration file" do
-  command "nginx -t -c #{nginx_dir}/nginx.conf"
-  action :nothing
-  notifies :reload, "service[nginx]"
-end
-
+include_recipe 'phpapp::nginx'
+include_recipe 'phpapp::php'
