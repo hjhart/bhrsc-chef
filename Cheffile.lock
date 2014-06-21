@@ -1,0 +1,24 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    build-essential (2.0.4)
+    paths (0.3.0)
+    rbac (1.0.2)
+    resource-control (0.1.1)
+    smf (2.0.6)
+      rbac (>= 1.0.1)
+
+GIT
+  remote: git@github.com:wanelo-chef/nginx.git
+  ref: master
+  sha: 93a94748c44c660f8b7148c4657e5f8a5aaa8cf9
+  specs:
+    nginx (0.4.1)
+      build-essential (>= 0.0.0)
+      paths (~> 0.3)
+      resource-control (~> 0.1)
+      smf (~> 2.0.3)
+
+DEPENDENCIES
+  nginx (>= 0)
+
