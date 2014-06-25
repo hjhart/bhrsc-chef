@@ -9,8 +9,19 @@ server {
 
     root <%= @doc_root %>;
 
+    index index.php
+
     location / {
-        index  index.html index.htm;
+        try_files $uri $uri/ /index.php?$args;
+    } 
+
+    location ~ .php$ {
+        try_files $uri /index.php; 
+
+        include fastcgi_params;
+        fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME <%= @doc_root %>$fastcgi_script_name;
     }
 
     location ~* ^.+\.(jpg|jpeg|gif|swf|png|ico|css|pdf|txt|js|eot|woff|ttf)$ {
@@ -18,12 +29,5 @@ server {
         expires max;
         add_header Cache-Control public;
 
-    }
-
-    location ~ \.php$ {
-        include /opt/local/etc/nginx/fastcgi_params;
-        fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME <%= @doc_root %>$fastcgi_script_name;
     }
 }
