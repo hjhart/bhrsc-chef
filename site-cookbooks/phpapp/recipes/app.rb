@@ -42,12 +42,6 @@ cookbook_file "#{home_dir}/.ssh/config" do
   mode "0400"
 end
 
-git "/opt/mysources/couch" do
-  repository "git://git.apache.org/couchdb.git"
-  revision "master"
-  action :sync
-end
-
 git node['phpapp']['git_repo_home'] do
   repository "git@github.com:hjhart/bhrsc.git"
   action :sync
