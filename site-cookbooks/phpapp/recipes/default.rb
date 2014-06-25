@@ -30,3 +30,9 @@ execute "verify nginx configuration file" do
   notifies :reload, "service[nginx]"
 end
 
+template "/opt/local/bin/php-fastcgi" do
+  source "fast-cgi.erb"
+  mode 0755
+  owner "www"
+  group "www"
+end
