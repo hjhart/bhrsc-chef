@@ -9,7 +9,7 @@ server {
 
     root <%= @doc_root %>;
 
-    index index.php
+    index index.php;
 
     location / {
         try_files $uri $uri/ /index.php?$args;
