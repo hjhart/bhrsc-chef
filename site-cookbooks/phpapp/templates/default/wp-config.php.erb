@@ -1,0 +1,88 @@
+<?php
+/** Enable W3 Total Cache */
+define('WP_CACHE', true); // Added by W3 Total Cache
+
+
+define( 'WPCACHEHOME', '/home/www/bhrsc/bhrsc.com/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
+ 
+define('DB_NAME', '<%= node['phpapp']['mysql']['database'] %>');
+
+/** MySQL database username */
+define('DB_USER', '<%= node['phpapp']['mysql']['user'] %>');
+
+/** MySQL database password */
+define('DB_PASSWORD', '<%= node['phpapp']['mysql']['password'] %>');
+
+/** MySQL hostname */
+define('DB_HOST', '127.0.0.1');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+
+/**#@+
+ * Authentication Unique Keys and Salts.
+ *
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ *
+ * @since 2.6.0
+ */
+define('AUTH_KEY',         '&umh2ujL#aTB#A/OR#UlitRG!7zUph_TqkA)HNUK(/n_o~_K&&?xiQ/!+s$_eRfw');
+define('SECURE_AUTH_KEY',  '_|?q+$#PUGF(f@ItVLq!L&@T``kP*RB%a#:4_0~`wm:kHVlriWa/w%Jm((dA`SJ/');
+define('LOGGED_IN_KEY',    'Y3QWqq&rQTJbh*%%*FM$z42/gKQ@0/isUmK`TR6uu0%`PDX)!tZ;OQ:T0rqekJXg');
+define('NONCE_KEY',        '#"rOMx`D(l6o~za/fq~cltBVrD)PH5wACuBGUD"GdPO)A$Zx/lWq%y#/r;G#r6/x');
+define('AUTH_SALT',        '#k*D1SkSP/3l3XwR+P1ftphL^xv`89$aK/")dg2BQNJ(Ld|2f27:Zw:u3cxss!:N');
+define('SECURE_AUTH_SALT', 'hc~n!^kuL5VkXM;M8un98Y&()!~7iw91aYB2H+j7XXV!e*yYpuY2ov&HmjFC7ua(');
+define('LOGGED_IN_SALT',   '#z5t2n0Qd1(iTVA(B9Ltb+"d;$1s:a_GlpXit(wRiIe2!*h&K@k660/FpS!8v20:');
+define('NONCE_SALT',       'f1(;!DaT8k5TlfAmHrsCwx)jlj?a/UDcIx%K|$5gaeoDQfK~d+C*W?VWud7h&uQ$');
+
+/**#@-*/
+
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each a unique
+ * prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix  = 'wp_5w4wh4_';
+
+/**
+ * Limits total Post Revisions saved per Post/Page.
+ * Change or comment this line out if you would like to increase or remove the limit.
+ */
+define('WP_POST_REVISIONS',  10);
+
+/**
+ * WordPress Localized Language, defaults to English.
+ *
+ * Change this to localize WordPress. A corresponding MO file for the chosen
+ * language must be installed to wp-content/languages. For example, install
+ * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
+ * language support.
+ */
+define('WPLANG', '');
+
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
+define( 'WP_MEMORY_LIMIT', '96M' );
+
+/* That's all, stop editing! Happy blogging. */
+
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+  define('ABSPATH', dirname(__FILE__) . '/');
+
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
+

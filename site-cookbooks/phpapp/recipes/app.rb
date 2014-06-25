@@ -50,3 +50,10 @@ git node['phpapp']['git_repo_home'] do
   user user
   group group
 end
+
+template "#{node['phpapp']['git_repo_home']}/bhrsc.com/wp-config.php" do
+  source 'wp-config.php.erb'
+  owner user
+  group group
+  mode 0644
+end
