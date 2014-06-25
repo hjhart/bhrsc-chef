@@ -7,42 +7,10 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Request-Start "t=${msec}";
 
+    root <%= @doc_root %>;
+
     location / {
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-        proxy_connect_timeout 10s;
-        proxy_send_timeout 10s;
-        proxy_read_timeout 210s;
-
-        # This directive set the buffer size, into which will be read the first part of the response,
-        # obtained from the proxied server. In this part of response the small response-header is located,
-        # as a rule.  By default, the buffer size is equal to the size of one buffer in directive
-        # proxy_buffers; however, it is possible to set it to less.
-
-        proxy_buffer_size 32k;
-
-        # These are buffers that were already passed downstream but not yet completely send and therefor
-        # they can’t be reused.   This directive limits the maximum total size of such buffers and thus
-        # allows remaining buffers to be used to read upstream responses.
-
-        proxy_busy_buffers_size 16M;
-
-        # This directive sets the number and the size of buffers, into which will be read the answer,
-        # obtained from the proxied server. By default, the size of one buffer is equal to the size of page.
-        # Depending on platform this is either 4K or 8K.
-
-        proxy_buffers 1024 32k;
-        proxy_intercept_errors on;
-
-        proxy_max_temp_file_size 100M;
-        proxy_temp_file_write_size 1024k;
-
-        root <%= @doc_root %>;
-
-        if ($request_method = GET ) {
-            rewrite ^(.+)/$ http://$host$1 permanent;
-        }
+        index  index.html index.htm;
     }
 
     location ~* ^.+\.(jpg|jpeg|gif|swf|png|ico|css|pdf|txt|js|eot|woff|ttf)$ {
@@ -50,11 +18,12 @@ server {
         expires max;
         add_header Cache-Control public;
 
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
 
-        root <%= @doc_root %>;
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
     }
 }
-
-
