@@ -51,6 +51,6 @@ end
 git node['phpapp']['git_repo_home'] do
   repository "git@github.com:hjhart/bhrsc.git"
   action :sync
-  owner user
+  user user
   group group
 end
