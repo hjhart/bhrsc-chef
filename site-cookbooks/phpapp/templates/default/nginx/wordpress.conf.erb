@@ -24,6 +24,6 @@ server {
         include /opt/local/etc/nginx/fastcgi_params;
         fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
         fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME <%= @doc_root %>$fastcgi_script_name;
     }
 }
