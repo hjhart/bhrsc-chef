@@ -16,7 +16,7 @@ template "#{nginx_dir}/sites-available/wordpress.conf" do
   source "nginx/wordpress.conf.erb"
   owner  "www"
   mode 0644
-  variables({ doc_root: default['phpapp']['git_repo_home'], host_name: '165.225.148.128' })
+  variables({ doc_root: node['phpapp']['git_repo_home'], host_name: '165.225.148.128' })
   notifies :run, "execute[verify nginx configuration file]"
 end
 
