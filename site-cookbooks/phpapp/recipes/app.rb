@@ -1,4 +1,3 @@
-
 user = node['phpapp']['user']
 group = node['phpapp']['group']
 home_dir = node['phpapp']['home']
@@ -49,7 +48,7 @@ git "/opt/mysources/couch" do
   action :sync
 end
 
-git node['phpapp']['git_repo_home']} do
+git node['phpapp']['git_repo_home'] do
   repository "git@github.com:hjhart/bhrsc.git"
   action :sync
   owner user
