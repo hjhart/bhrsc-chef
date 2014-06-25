@@ -14,6 +14,8 @@ user user do
   home home_dir
 end
 
+execute "chown #{user}:#{group} -R #{home_dir}"
+
 directory "#{home_dir}/.ssh" do
   owner user
   group group
