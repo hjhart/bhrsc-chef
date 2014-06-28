@@ -2,3 +2,4 @@ site "http://community.opscode.com/api/v1"
 
 cookbook 'nginx',                  git: 'git@github.com:wanelo-chef/nginx.git'
 
+cookbook 'php-smartos'             git: 'git@github.com:hjhart/php-smartos.git'

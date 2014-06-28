@@ -1,1 +1,1 @@
-# TODO: Run manual configure command as long as php does not exist in path!
+include 'php-smartos::default'
