@@ -9,6 +9,13 @@ SITE
       rbac (>= 1.0.1)
 
 GIT
+  remote: git@github.com:hjhart/php-smartos.git
+  ref: master
+  sha: bf039d5d1e8e8d5d2a29cacc98056e5de4b5cc51
+  specs:
+    php-smartos (0.1.0)
+
+GIT
   remote: git@github.com:wanelo-chef/nginx.git
   ref: master
   sha: 93a94748c44c660f8b7148c4657e5f8a5aaa8cf9
@@ -21,4 +28,5 @@ GIT
 
 DEPENDENCIES
   nginx (>= 0)
+  php-smartos (>= 0)
 
